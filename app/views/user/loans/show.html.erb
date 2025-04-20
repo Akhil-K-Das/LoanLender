@@ -7,7 +7,7 @@
 
   <% if @loan.status == "approved" %>
     <div class="mt-4">
-      <%= button_to "Accept Loan", accept_user_loan_path(@loan), method: :patch, class: "bg-green-600 text-white px-4 py-2 rounded mr-2" %>
+      <%= button_to "Accept Loan", accept_user_loan_path(@loan), method: :patch, class: "bg-green-600 text-white px-4 py-2 rounded mr-2" %></br>
       <%= button_to "Reject Loan", reject_user_loan_path(@loan), method: :patch, class: "bg-red-600 text-white px-4 py-2 rounded" %>
     </div>
   <% elsif @loan.status == "waiting_for_adjustment_acceptance" %>
