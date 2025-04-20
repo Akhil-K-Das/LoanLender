@@ -1,0 +1,14 @@
+<div class="p-6">
+  <h2 class="text-2xl font-bold mb-4">Your Loans</h2>
+  <%= link_to "Request Loan", new_user_loan_path, class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  <div class="mt-4 grid grid-cols-1 gap-4">
+    <% @loans.each do |loan| %>
+      <div class="border p-4 rounded-lg bg-white shadow-md">
+        <p><strong>Amount:</strong> ₹<%= loan.amount %></p>
+        <p><strong>Interest Rate:</strong> <%= loan.interest_rate %>%</p>
+        <p><strong>Status:</strong> <%= loan.status.titleize %></p>
+        <%= link_to "View", user_loan_path(loan), class: "text-blue-500 underline" %>
+      </div>
+    <% end %>
+  </div>
+</div>

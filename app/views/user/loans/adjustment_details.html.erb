@@ -1,0 +1,9 @@
+<div class="mt-4 grid grid-cols-1 gap-4">
+    <% @loan_adjustments.each do |adjustment_details| %>
+        <div class="border p-4 rounded-lg bg-white shadow-md">
+            <p><strong>Amount:</strong> ₹<%= adjustment_details.new_amount %></p>
+            <p><strong>Interest Rate:</strong> <%= adjustment_details.new_interest_rate %>%</p>
+            <p><strong>Status Made:</strong> <%= adjustment_details.made_by %></p>
+        </div>
+    <% end %>
+</div>
