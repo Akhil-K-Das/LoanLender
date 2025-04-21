@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :wallet do
-    balance { "9.99" }
-    user { nil }
+    balance { 10000 }
+    association :user
   end
 end

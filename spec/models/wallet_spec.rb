@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Wallet, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "belongs to user" do
+    wallet = create(:wallet)
+    expect(wallet.user).to be_present
+  end
 end

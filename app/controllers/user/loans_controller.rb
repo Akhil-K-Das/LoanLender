@@ -1,7 +1,8 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
+
 class User::LoansController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_loan, only: [:show, :accept, :reject, :repay, :request_readjustment, :adjustment_details]
+  before_action :set_loan, only: [ :show, :accept, :reject, :repay, :request_readjustment, :adjustment_details ]
 
   def index
     @loans = current_user.loans
@@ -46,7 +47,7 @@ class User::LoansController < ApplicationController
 
   def adjustment_details
     puts "######INSIDE ADJUSTMENT #{@loan.id}"
-    @loan_adjustments = LoanAdjustment.where(loan_id:@loan.id)#@loan.loan_adjustments
+    @loan_adjustments = LoanAdjustment.where(loan_id: @loan.id)# @loan.loan_adjustments
     puts ".........#{@loan_adjustments}........."
   end
 
