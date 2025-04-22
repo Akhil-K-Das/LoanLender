@@ -6,7 +6,13 @@ class Admin::LoansController < ApplicationController
     before_action :set_loan, only: [ :show, :update, :approve, :reject ]
 
     def index
-      @loans = Loan.all
+      #   @loans = Loan.all
+      puts "inside filters"
+      loan_status = params[:status]
+      puts "loan status #{loan_status}"
+      @loans = Loan.where(status: loan_status) if loan_status.present?
+      @loans = Loan.all if loan_status.blank?
+      puts "filters #{@loans}"
     end
 
     def show; end
@@ -52,6 +58,13 @@ class Admin::LoansController < ApplicationController
         @loan.update(status: "rejected")
         redirect_to admin_loans_path, alert: "You rejected the loan offer."
     end
+
+    # def filters
+    #     puts "inside filters"
+    #     loan_status = params[:loan_status]
+    #     filter_loan = Loan.where(status: loan_status)
+    #     puts "filters #{filter_loan}"
+    # end
 
     private
 

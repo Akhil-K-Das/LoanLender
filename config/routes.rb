@@ -1,18 +1,22 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 Rails.application.routes.draw do
   devise_for :users
-  mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => "/sidekiq"
 
   namespace :admin do
-    resources :loans, only: [:index, :show, :update] do
+    resources :loans, only: [ :index, :show, :update ] do
       member do
         patch :approve
         patch :reject
+        # get :filters
+      end
+      collection do
+        get :filters
       end
     end
   end
   namespace :user do
-    resources :loans, only: [:index, :new, :create, :show, :update] do
+    resources :loans, only: [ :index, :new, :create, :show, :update ] do
       member do
         patch :accept
         patch :request_readjustment
